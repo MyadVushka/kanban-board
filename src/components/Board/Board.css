@@ -26,3 +26,13 @@
 .title {
     font-size: 32px;
 }
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 900px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
