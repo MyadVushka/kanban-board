@@ -1,0 +1,71 @@
+.wrapper-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(47, 43, 43, 0.26);
+}
+
+.wrapper-modal__inner { 
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    width: 300px;
+    padding: 70px 20px 20px 20px;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.close-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: 10%;
+    top: 5%;
+    cursor: pointer;
+    border: none;
+    border: solid 1px grey;
+    font-size: 18px;
+}
+
+.wrapper-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wrapper-modal__form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wrapper-modal__form_input {
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.wrapper-modal__form_input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.358);
+}
+

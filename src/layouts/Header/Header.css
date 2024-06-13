@@ -1,0 +1,44 @@
+.wrapper-header {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    padding: 30px;
+    height: 70px;
+    background-color: aliceblue;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.wrapper-balls {
+    display: flex;
+    gap: 15px;
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.ball:nth-child(1) {
+    background-color: rgb(222, 80, 80);
+}
+
+.ball:nth-child(2) {
+    background-color: rgb(38, 215, 209);
+}
+
+.ball:nth-child(3) {
+    background-color: rgb(170, 141, 192);
+}
+
+.wrapper-header h1 {
+    color: rgb(127, 202, 206)
+}
