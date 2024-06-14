@@ -98,5 +98,11 @@ export const selectInProgress = (state: RootState) =>
 export const selectComplete = (state: RootState) => state.taskSlice.complete;
 export const selectToRefactor = (state: RootState) =>
   state.taskSlice.toRefactor;
+export const selectAll = (state: RootState) => [
+  ...state.taskSlice.todo,
+  ...state.taskSlice.inProgress,
+  ...state.taskSlice.complete,
+  ...state.taskSlice.toRefactor,
+];
 
 export default taskSlice.reducer;

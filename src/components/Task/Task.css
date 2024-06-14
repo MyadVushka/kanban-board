@@ -4,25 +4,14 @@
     flex-direction: column;
     width: 200px;
     gap: 10px;
-    color: grey;
+    color: black;
     border-radius: 10px;
+    cursor: grab;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    background-color: white;
 }
 
-.todo {
-    background-color: rgba(216, 188, 47, 0.677);
-}
 
-.inProgress {
-    background-color: #bfd2e6;
-}
-
-.complete {
-    background-color: #a3d1be;
-}
-
-.toRefactor {
-    background-color: #b58c5d;
-}
 
 .task-delete {
     padding: 5px;
