@@ -1,7 +1,7 @@
 import "./Main.css";
 import Board from "../../components/Board";
 import { BoardSettings } from "../../types/general-types";
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, MouseSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { useDispatch } from "react-redux";
 import { moveTask } from "../../store/features/taskSlice";
 
@@ -35,7 +35,7 @@ const BOARD_SETTINGS: BoardSettings[] = [
 const Main = () => {
   const dispatch = useDispatch();
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = (e: DragEndEvent) => {
     const { active, over } = e;
 
     if (over) {
@@ -43,9 +43,19 @@ const Main = () => {
     }
   };
 
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 10,
+    }
+  })
+
+  const sensors = useSensors(
+    mouseSensor,
+  );
+
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <main className="wrapper-main">
+    <main className="wrapper-main">
+      <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
         {BOARD_SETTINGS.map((el: BoardSettings) => (
           <Board
             key={el.id}
@@ -55,8 +65,8 @@ const Main = () => {
             number={el.number}
           />
         ))}
-      </main>
-    </DndContext>
+      </DndContext>
+    </main>
   );
 };
 

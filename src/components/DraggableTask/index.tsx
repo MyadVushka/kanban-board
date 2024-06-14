@@ -1,6 +1,7 @@
 import { useDraggable } from '@dnd-kit/core';
+import { ReactNode } from 'react';
 
-const DraggableTask = ({ id, children }) => {
+const DraggableTask = ({ id, children } : {id: number, children: ReactNode}) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
   });

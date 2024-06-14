@@ -1,16 +1,15 @@
 import { useDroppable } from '@dnd-kit/core';
+import { ReactNode } from 'react';
 
-const DroppableBoard = ({ id, children }) => {
+const DroppableBoard = ({ id, children } : {id: number, children: ReactNode}) => {
   const { isOver, setNodeRef } = useDroppable({
     id,
   });
 
-  const style = {
-    backgroundColor: isOver ? 'lightblue' : undefined,
-  };
+
 
   return (
-    <div ref={setNodeRef} style={style}>
+    <div ref={setNodeRef}>
       {children}
     </div>
   );

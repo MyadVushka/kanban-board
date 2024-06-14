@@ -7,11 +7,14 @@ import {
   removeComplete,
   removeToRefactor,
 } from "../../store/features/taskSlice";
+import { MouseEventHandler } from "react";
 
 const Task = (props: TaskSettings) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+  const handleDelete : MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+
     switch (props.type) {
       case "todo":
         dispatch(removeTodo(props.id));
