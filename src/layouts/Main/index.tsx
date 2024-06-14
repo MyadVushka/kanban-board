@@ -1,6 +1,9 @@
 import "./Main.css";
 import Board from "../../components/Board";
 import { BoardSettings } from "../../types/general-types";
+import { DndContext } from "@dnd-kit/core";
+import { useDispatch } from "react-redux";
+import { moveTask } from "../../store/features/taskSlice";
 
 const BOARD_SETTINGS: BoardSettings[] = [
   {
@@ -30,14 +33,30 @@ const BOARD_SETTINGS: BoardSettings[] = [
 ];
 
 const Main = () => {
-  
+  const dispatch = useDispatch();
+
+  const handleDragEnd = (e) => {
+    const { active, over } = e;
+
+    if (over) {
+      dispatch(moveTask({ id: active.id, toBoardId: over.id }));
+    }
+  };
 
   return (
-    <main className="wrapper-main">
-      {BOARD_SETTINGS.map((el: BoardSettings) => (
-        <Board key={el.id} id={el.id} title={el.title} color={el.color} number={el.number} />
-      ))}
-    </main>
+    <DndContext onDragEnd={handleDragEnd}>
+      <main className="wrapper-main">
+        {BOARD_SETTINGS.map((el: BoardSettings) => (
+          <Board
+            key={el.id}
+            id={el.id}
+            title={el.title}
+            color={el.color}
+            number={el.number}
+          />
+        ))}
+      </main>
+    </DndContext>
   );
 };
 

@@ -43,6 +43,40 @@ const taskSlice = createSlice({
         (task: TaskSettings) => task.id !== action.payload
       );
     },
+    moveTask: (state, action) => {
+      const { id, toBoardId } = action.payload;
+      const allTasks = [
+        ...state.todo,
+        ...state.inProgress,
+        ...state.complete,
+        ...state.toRefactor,
+      ];
+      const taskToMove = allTasks.find((task) => task.id === id);
+
+      if (taskToMove) {
+        state.todo = state.todo.filter((task) => task.id !== id);
+        state.inProgress = state.inProgress.filter((task) => task.id !== id);
+        state.complete = state.complete.filter((task) => task.id !== id);
+        state.toRefactor = state.toRefactor.filter((task) => task.id !== id);
+
+        switch (toBoardId) {
+          case 10:
+            state.todo.push(taskToMove);
+            break;
+          case 11:
+            state.inProgress.push(taskToMove);
+            break;
+          case 12:
+            state.complete.push(taskToMove);
+            break;
+          case 13:
+            state.toRefactor.push(taskToMove);
+            break;
+          default:
+            break;
+        }
+      }
+    },
   },
 });
 
@@ -55,6 +89,7 @@ export const {
   removeComplete,
   addToRefactor,
   removeToRefactor,
+  moveTask,
 } = taskSlice.actions;
 
 export const selectTodo = (state: RootState) => state.taskSlice.todo;

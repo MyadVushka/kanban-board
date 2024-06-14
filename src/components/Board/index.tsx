@@ -1,6 +1,8 @@
 import "./Board.css";
 import ModalSettings from "../../layouts/ModalSettings";
 import Task from "../Task";
+import DraggableTask from "../DraggableTask";
+import DroppableBoard from "../DroppableBoard";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
@@ -36,66 +38,76 @@ const Board = ({
   const [parent] = useAutoAnimate();
 
   return (
-    <div className="wrapper-board">
-      {modalVisibility && (
-        <ModalSettings
-          board_id={id}
-          toChangeVis={() => setModalVisibility(false)}
-        />
-      )}
-      <h2 className="title" style={{ color }}>
-        {number} {title}
-      </h2>
-      <button onClick={handleAdd} className="board-button">
-        Add card +
-      </button>
-      <ul className="tasks-list" ref={parent}>
-        {title == "To do" &&
-          todoTasks.map((task: TaskSettings) => (
-            <Task
-              key={task.id}
-              type={task.type}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              priority={task.priority}
-            />
-          ))}
-        {title == "In progress" &&
-          inProgressTasks.map((task: TaskSettings) => (
-            <Task
-              key={task.id}
-              type={task.type}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              priority={task.priority}
-            />
-          ))}
-        {title == "Complete" &&
-          completeTasks.map((task: TaskSettings) => (
-            <Task
-              key={task.id}
-              type={task.type}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              priority={task.priority}
-            />
-          ))}
-        {title == "To refactor" &&
-          toRefactorTasks.map((task: TaskSettings) => (
-            <Task
-              key={task.id}
-              type={task.type}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              priority={task.priority}
-            />
-          ))}
-      </ul>
-    </div>
+    <DroppableBoard id={id}>
+      <div className="wrapper-board">
+        {modalVisibility && (
+          <ModalSettings
+            board_id={id}
+            toChangeVis={() => setModalVisibility(false)}
+          />
+        )}
+        <h2 className="title" style={{ color }}>
+          {number} {title}
+        </h2>
+        <button onClick={handleAdd} className="board-button">
+          Add card +
+        </button>
+        <ul className="tasks-list" ref={parent}>
+          {title == "To do" &&
+            todoTasks.map((task: TaskSettings) => (
+              <DraggableTask key={task.id} id={task.id}>
+                <Task
+                  key={task.id}
+                  type={task.type}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  priority={task.priority}
+                />
+              </DraggableTask>
+            ))}
+          {title == "In progress" &&
+            inProgressTasks.map((task: TaskSettings) => (
+              <DraggableTask key={task.id} id={task.id}>
+                <Task
+                  key={task.id}
+                  type={task.type}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  priority={task.priority}
+                />
+              </DraggableTask>
+            ))}
+          {title == "Complete" &&
+            completeTasks.map((task: TaskSettings) => (
+              <DraggableTask key={task.id} id={task.id}>
+                <Task
+                  key={task.id}
+                  type={task.type}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  priority={task.priority}
+                />
+              </DraggableTask>
+            ))}
+          {title == "To refactor" &&
+            toRefactorTasks.map((task: TaskSettings) => (
+              <DraggableTask key={task.id} id={task.id}>
+                <Task
+                  key={task.id}
+                  type={task.type}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  priority={task.priority}
+                />
+              </DraggableTask>
+            ))}
+        </ul>
+      </div>
+    </DroppableBoard>
   );
 };
 
