@@ -8,9 +8,9 @@ import {
   selectInProgress,
   selectComplete,
   selectToRefactor,
-  } from "../../store/features/taskSlice";
-  import { TaskSettings } from "../../types/general-types";
-  import { useAutoAnimate } from "@formkit/auto-animate/react";
+} from "../../store/features/taskSlice";
+import { TaskSettings } from "../../types/general-types";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 const Board = ({
   title,
   color,
@@ -33,7 +33,7 @@ const Board = ({
     setModalVisibility(true);
   };
 
-  const [parent, enableAnimations] = useAutoAnimate();
+  const [parent] = useAutoAnimate();
 
   return (
     <div className="wrapper-board">

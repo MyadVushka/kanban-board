@@ -107,14 +107,11 @@ const ModalSettings = ({
 
   const handleClose = () => {
     toChangeVis();
-  }
+  };
 
   return (
     <div className="wrapper-modal">
       <div className="wrapper-modal__inner">
-        <button onClick={handleClose} className="close-button">
-          X
-        </button>
         <form action="" className="wrapper-modal__form">
           <div className="wrapper-modal__form-block">
             <p>Task title:</p>
@@ -147,6 +144,11 @@ const ModalSettings = ({
           >
             Confirm
           </button>
+          <button
+            type="submit"
+            onClick={handleClose}
+            className="wrapper-modal__form-confirm cancel-red"
+          >Cancel</button>
         </form>
       </div>
     </div>

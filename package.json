@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^1.1.12",
     "@formkit/auto-animate": "^0.8.2",
     "@reduxjs/toolkit": "^2.2.5",
     "react": "^18.2.0",

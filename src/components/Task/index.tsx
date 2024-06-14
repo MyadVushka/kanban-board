@@ -32,9 +32,9 @@ const Task = (props: TaskSettings) => {
 
   return (
     <div className={"wrapper-task " + props.type}>
-      <h2 className="task-title">{props.title}</h2>
-      <p className="task-description">{props.description}</p>
-      <p className="task-priority">Priority: {props.priority}</p>
+      <h2 className="task-text task-title">{props.title}</h2>
+      <p className="task-text description">{props.description}</p>
+      <p className="task-text priority">Priority: {props.priority}</p>
       <button onClick={handleDelete} className="task-delete">
         Delete
       </button>
